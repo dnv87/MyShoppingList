@@ -13,17 +13,15 @@ class MainViewModel : ViewModel() {
     private val deleteShopItemUseCase = DeleteShopItemUseCase(repository)
     private val editShopListUseCase = EditShopItemUseCase(repository)
 
-        val shopList = getShopListUseCase.getShopList()
+    val shopList = getShopListUseCase.getShopList()
 
 
-    fun deleteShopItem( shopItem: ShopItem){
+    fun deleteShopItem(shopItem: ShopItem) {
         deleteShopItemUseCase.deleteShopItem(shopItem)
-//        getShopList() //обновляем состояние списка
     }
 
-    fun changeEnableState(shopItem: ShopItem){
+    fun changeEnableState(shopItem: ShopItem) {
         val newItem = shopItem.copy(enabled = !shopItem.enabled)
         editShopListUseCase.editShopItem(newItem)
-//        getShopList() не нужен т.к. реализовали LiveData
     }
 }

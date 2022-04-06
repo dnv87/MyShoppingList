@@ -18,8 +18,8 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
             notifyDataSetChanged()
         }
 
-    var onShopItemLongClickListener:((ShopItem)-> Unit)? = null
-    var onShopItemClickListener:((ShopItem) -> Unit)? = null
+    var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
+    var onShopItemClickListener: ((ShopItem) -> Unit)? = null
 
     //как создать View
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
@@ -87,6 +87,6 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
         const val VIEW_TYPE_ENABLED = 1
         const val VIEW_TYPE_DISABLED = 2
 
-           const val MAX_POOL_SIZE = 10
+        const val MAX_POOL_SIZE = 10
     }
 }
