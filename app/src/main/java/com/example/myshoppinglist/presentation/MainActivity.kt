@@ -45,19 +45,20 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        shopListAdapter.onShopItemLongClickListener = {
-            viewModel.changeEnableState(it)
-        }
-        shopListAdapter.onShopItemClickListener = {
-            Log.d("my", "shopItem: ${it.toString()}")
-        }
+        setupLongClickListener()
+        setupClickListener()
+        setupSwipeListener(rvShopList)
 
-//        реализация свайпа для удаления элемента
+    }
+
+
+    private fun setupSwipeListener(rvShopList: RecyclerView) {
+        //        реализация свайпа для удаления элемента
         val callback = object :
             ItemTouchHelper.SimpleCallback(
                 0,
                 ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-            ){
+            ) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -73,7 +74,20 @@ class MainActivity : AppCompatActivity() {
         }
         val itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(rvShopList)
+    }
 
+
+    private fun setupClickListener() {
+        shopListAdapter.onShopItemClickListener = {
+            Log.d("my", "shopItem: ${it.toString()}")
+        }
+    }
+
+
+    private fun setupLongClickListener() {
+        shopListAdapter.onShopItemLongClickListener = {
+            viewModel.changeEnableState(it)
+        }
     }
 
 
